@@ -1,0 +1,23 @@
+components:
+  artifact_store:
+    configuration: {}
+    flavor: local
+    name: default
+    type: artifact_store
+  experiment_tracker:
+    configuration: {}
+    flavor: mlflow
+    name: mlflow_tracker
+    type: experiment_tracker
+  model_deployer:
+    configuration: {}
+    flavor: bentoml
+    name: bentoml_deployer
+    type: model_deployer
+  orchestrator:
+    configuration: {}
+    flavor: local
+    name: default
+    type: orchestrator
+stack_name: local-mlflow-stack
+zenml_version: 0.82.1

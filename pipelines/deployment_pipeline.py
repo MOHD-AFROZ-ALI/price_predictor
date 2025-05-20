@@ -7,8 +7,10 @@ from steps.prediction_service_loader import prediction_service_loader
 from steps.predictor import predictor
 from zenml import pipeline
 from zenml.integrations.mlflow.steps import mlflow_model_deployer_step
+# from zenml.integrations.bentoml.steps import bento_builder_step, bentoml_model_deployer_step
 
 requirements_file = os.path.join(os.path.dirname(__file__), "requirements.txt")
+
 
 
 @pipeline
@@ -19,6 +21,32 @@ def continuous_deployment_pipeline():
 
     # (Re)deploy the trained model
     mlflow_model_deployer_step(workers=3, deploy_decision=True, model=trained_model)
+
+
+# def continuous_deployment_pipeline():
+#     """Run a training job and package + deploy with BentoML."""
+#     # 1. Train the model
+#     trained_model = ml_pipeline()
+
+#     # 2. Package the model into a Bento
+#     bento = bento_builder_step(
+#         model=trained_model,
+#         model_name="prices_predictor",
+#         model_type="sklearn",            # or the appropriate flavor
+#         service="service.py:PredictionService",  # path to your Bento service
+#     )
+
+#     # 3. Deploy the Bento as a local HTTP service
+#     deployed_model = bentoml_model_deployer_step(
+#         bento=bento,
+#         model_name="prices_predictor",
+#         port=8000,
+#         deployment_type="local",         # use "container" if you prefer Docker
+#     )
+
+
+
+
 
 
 @pipeline(enable_cache=False)
