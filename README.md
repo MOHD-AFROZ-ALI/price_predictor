@@ -285,9 +285,6 @@ See the [LICENSE](LICENSE) file for more details.
 ---
 
 **Developed by: Mohammad Afroz Ali**
-© 2023
+© 2025
 
-```
 
-Let me know if you want this customized with your GitHub link or your current project status!
-```
